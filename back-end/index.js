@@ -4,12 +4,14 @@ const cors = require('cors');
 const app = express();
 const route = require('./src/route');
 const mongodb = require('./src/mongodb');
+const cors = require('cors')
 
 const port = 8000;
 
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/', route);
+
 
 mongodb();
 
