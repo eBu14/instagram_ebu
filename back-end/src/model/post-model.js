@@ -2,11 +2,10 @@ const { model, Schema } = require('mongoose');
 
 const PostSchema = new Schema({
     description: String,
-    userId: String,
     userName: String,
-    userProfile: String,
-    like: Number,
-    images: [String]
+    // userProfile: String,
+    // like: Number,
+    images: String
 })
 
 const PostModel = model('Post', PostSchema);

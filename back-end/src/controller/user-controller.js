@@ -28,7 +28,7 @@ exports.createUser = async (request, response) => {
     const createUser = await User.create({ ...request.body });
     response
         .status(201)
-        .json({ message: "New user us created", data: createUser })
+        .json({ message: "New user is created", data: createUser })
 }
 
 exports.getUser = async (req, res) => {
