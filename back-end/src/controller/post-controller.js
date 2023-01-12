@@ -1,10 +1,13 @@
-    const { response } = require('express');
-    const PostModel = require('../model/post-model');
+let jwt = require('jsonwebtoken')
+const { response } = require('express');
+const PostModel = require('../model/post-model');
 
     exports.getPosts = async (req, res) => {
         const posts = await PostModel.find();
-
-        res.status('200').json(posts)
+        if(!req.body.userName) {
+            return res.status(400).json({message : "Please login"})
+        } 
+        res.status(200).json({data: posts})
     }
 
     exports.createPost = async (request, response) => {

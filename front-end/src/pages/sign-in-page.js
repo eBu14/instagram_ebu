@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import jwt from 'jwt-decode';
 
 export const SignInPage = () => {
 
@@ -19,7 +20,9 @@ export const SignInPage = () => {
                 console.log(res.data)
                 setUsername("")
                 setPassword("")
-                localStorage.setItem('uid', res.data.data.username)
+                const user = jwt(res.data.token)
+                localStorage.setItem('token', res.data.token)    
+                localStorage.setItem('name' , user.username)
                 navigate('/home')
             })
             .catch((er) => {

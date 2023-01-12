@@ -1,20 +1,34 @@
+let jwt = require('jsonwebtoken')
 const { request, response } = require('express');
 const User = require('../model/user-model')
 exports.getUsers = async (req, res) => {
 
 }
 exports.login = async (req, response) => {
+
     const { username, password } = req.body;
     const userData = await User.findOne({ username })
-    if (userData.password === password) {
+    const token = jwt.sign(
+        { username: username, password: password },
+        process.env.JWT_SECRET || "defaultSecret",
+        { expiresIn: "1d" }
+    )
+    if(userData) {  
+        if (userData.password === password) {
         response
             .status(201)
-            .json({ message: username + "  Signed", data: userData })
-    } else {
+            .json({ message: username + "  Signed", data: userData, token: token })
+         } else {
         response
             .status(400)
-            .json({ message: "user not found" })
+            .json({ message: "incorrect password" })
+        }
+    }  else {
+    response
+        .status(400)
+        .json({message: "user not found"})
     }
+ 
 }
 exports.createUser = async (request, response) => {
     if (

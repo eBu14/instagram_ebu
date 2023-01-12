@@ -12,7 +12,7 @@ const App = () => {
   const navigate = useNavigate()
 
   useEffect( () => {
-    if(localStorage.getItem("uid")) {
+    if(localStorage.getItem("token")) {
       navigate('/home')
     } else {
       navigate('/signIn')
