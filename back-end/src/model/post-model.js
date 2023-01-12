@@ -1,11 +1,18 @@
 const { model, Schema } = require('mongoose');
+const { post } = require('../route');
 
 const PostSchema = new Schema({
     description: String,
     userId: String,
-    userName: String,
+    userName: {
+        type: String,
+        required: [true, 'userName is required'],
+    },
     userProfile: String,
-    like: Number,
+    like: {
+        type: Number,
+        default: 0
+    },
     images: [String]
 })
 

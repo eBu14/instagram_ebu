@@ -1,14 +1,14 @@
 const PostModel = require('../model/post-model');
 
 exports.getPosts = async (req, res) => {
-    const posts = await PostModel.find();
+    // const posts = await PostModel.find();
 
-    res.status('200').json(posts)
+    res.status('200').json('posts')
 }
 
 exports.createPost = async (req, res) => {
     try {
-        await PostModel.create(req.body)
+        // await PostModel.create(req.body)
 
         res.status('200').json({ message: 'success' })
     } catch (err) {
@@ -20,9 +20,9 @@ exports.getPost = async (req, res) => {
     const { id } = req.params;
 
     try {
-        await PostModel.findById(id);
+        // const post = await PostModel.findById(id);
 
-        res.status(200).json(post[0]);
+        // res.status(200).json(post);
     } catch (err) {
         res.status(400).json(err);
     }
@@ -32,7 +32,7 @@ exports.deletePost = async (req, res) => {
     const { id } = req.params;
 
     try {
-        await PostModel.findByIdAndDelete(id);
+        // await PostModel.findByIdAndDelete(id);
 
         res.status(200).json('Deleted');
     } catch (err) {
