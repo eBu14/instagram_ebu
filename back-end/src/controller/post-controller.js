@@ -4,14 +4,13 @@ const PostModel = require('../model/post-model');
 
     exports.getPosts = async (req, res) => {
         const posts = await PostModel.find();
-        if(!req.body.userName) {
+        if(req.body.userName) {
             return res.status(400).json({message : "Please login"})
         } 
         res.status(200).json({data: posts})
     }
 
     exports.createPost = async (request, response) => {
-            await PostModel.create(request.body)
             if(
                 !request.body.userName ||
                 !request.body.imageFile ||
@@ -19,7 +18,7 @@ const PostModel = require('../model/post-model');
             ) {
                 return response.status(400).json({ message: "description or image required"})
             }
-            const createPost = await PostModel.create({...request.body})
+            const createPost = await PostModel.create(request.body)
             response 
                 .status(201)
                 .json({message : "new image posted" , data: createPost})
