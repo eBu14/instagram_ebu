@@ -2,8 +2,9 @@ const { model, Schema } = require('mongoose');
 
 const PostSchema = new Schema({
     description: String,
-    userName: String,
-    imageFile: String
+    username: String,
+    imageFile: String,
+    owner : {type: Schema.ObjectId, ref: "User" , required: true}
     // userProfile: String,
     // like: Number,
 })

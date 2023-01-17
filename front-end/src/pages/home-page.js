@@ -25,9 +25,9 @@ export const HomePage = () => {
             </div>
             
         <div>
-        {data.map((e)=> {
+        {data.map((e ,index)=> {
             return(
-                <PostComponent imageFile={e.imageFile} userName={e.userName} description={e.description} id={e._id}/>
+                <PostComponent key={index} imageFile={e.imageFile} userName={e.userName} description={e.description} id={e._id}/>
             )
         })}
         </div>

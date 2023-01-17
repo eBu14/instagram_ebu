@@ -1,6 +1,7 @@
 let jwt = require('jsonwebtoken')
 const { response } = require('express');
 const PostModel = require('../model/post-model');
+const { findOne } = require('../model/post-model');
 
     exports.getPosts = async (req, res) => {
         const posts = await PostModel.find();
@@ -12,13 +13,16 @@ const PostModel = require('../model/post-model');
 
     exports.createPost = async (request, response) => {
             if(
-                !request.body.userName ||
+                !request.body.username ||
                 !request.body.imageFile ||
                 !request.body.description
             ) {
                 return response.status(400).json({ message: "description or image required"})
             }
-            const createPost = await PostModel.create(request.body)
+            const { username } = request.body.username;
+            const userData = await PostModel.findOne({ username })
+            const owner = userData._id
+            const createPost = await PostModel.create(request.body ,owner)
             response 
                 .status(201)
                 .json({message : "new image posted" , data: createPost})

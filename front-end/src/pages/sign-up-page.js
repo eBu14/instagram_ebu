@@ -9,7 +9,8 @@ export const SignUpPage = () => {
 
     function signup() {
         axios
-        .post(''+ "/signIn", {
+        .post('http://localhost:8000'+ "/signup", {
+           username : username,
            password : password
         })
         .then((res) => {
