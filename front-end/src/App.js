@@ -6,6 +6,7 @@ import { SignInPage } from './pages/sign-in-page';
 import { SignUpPage } from './pages/sign-up-page';
 import { useNavigate } from 'react-router-dom';
 import './styles/App.css';
+import User from './pages/user';
 
 const App = () => {
 
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/signup" element={<SignUpPage/>} />
         <Route path="/home" element={<HomePage/>} />
         <Route path="/post" element={<PostPage/>} />
+        <Route path='/userPosts' element={<User/>}/>
 
       </Routes>
 

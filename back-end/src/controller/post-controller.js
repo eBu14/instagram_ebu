@@ -24,16 +24,14 @@ const PostModel = require('../model/post-model');
                 .json({message : "new image posted" , data: createPost})
     }
 
-    exports.getPost = async (req, res) => {
-        const { id } = req.params;
-
-        try {
-            await PostModel.findById(id);
-
-            res.status(200).json(post[0]);
-        } catch (err) {
-            res.status(400).json(err);
+    exports.getUserPost = async (req, res) => {
+        const userName = req.body.userName
+        const userPost = await PostModel.findById(userName);
+        if(req.body.userName){
+            return res.status(400).json({message : "Please login"})
         }
+        res.status(200).json({data: userPost})
+    
     }
 
     exports.deletePost = async (req, res) => {

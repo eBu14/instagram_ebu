@@ -1,7 +1,7 @@
 let jwt = require('jsonwebtoken')
 const express = require('express');
 const router = express.Router();
-const { getPosts, createPost, getPost, deletePost, updatePost } = require('./controller/post-controller');
+const { getPosts, createPost, getUserPost, deletePost, updatePost } = require('./controller/post-controller');
 const { createUser, login } = require('./controller/user-controller');
 
 const middleWare = (req, res, next) => {
@@ -22,7 +22,7 @@ router
     .get('/', (req, res) => { res.status('200').json({ message: 'alive' }) })
     .get('/posts', getPosts)
     .post('/posts', createPost)
-    .get('/posts/:id', getPost)
+    .get('/UserPosts', getUserPost)
     .patch('/posts/:id', updatePost)
     .delete('/posts/:id', deletePost)
     .post('/signup', createUser)
