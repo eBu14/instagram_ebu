@@ -27,7 +27,7 @@ const PostPage = () => {
             .post('http://localhost:8000' + '/posts', {
                 description: description,
                 imageFile: imageFile,
-                username: localStorage.getItem("name")
+                userName: localStorage.getItem("name")
 
             }, config)
             .then((res) => {

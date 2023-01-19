@@ -4,7 +4,7 @@ const PostSchema = new Schema({
     description: String,
     username: String,
     imageFile: String,
-    owner : {type: Schema.ObjectId, ref: "User" , required: true}
+    // owner : {type: Schema.ObjectId, ref: "User" , required: true}
     // userProfile: String,
     // like: Number,
 })
