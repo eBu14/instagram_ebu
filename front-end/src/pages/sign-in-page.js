@@ -22,7 +22,7 @@ export const SignInPage = () => {
                 setPassword("")
                 const user = jwt(res.data.token)
                 localStorage.setItem('token', res.data.token)    
-                localStorage.setItem('name' , user.username)
+                localStorage.setItem('name' , user.userName)
                 navigate('/home')
             })
             .catch((er) => {

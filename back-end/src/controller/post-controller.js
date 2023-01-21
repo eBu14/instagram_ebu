@@ -5,7 +5,7 @@ const { findOne } = require('../model/post-model');
 
 exports.getPosts = async (req, res) => {
     const posts = await PostModel.find();
-    if (!req.body.userName) {
+    if (req.body.userName) {
         return res.status(400).json({ message: "Please login" })
     }
     res.status(200).json({ data: posts })

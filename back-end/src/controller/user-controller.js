@@ -80,8 +80,6 @@ exports.IsAdmin = async (req, res, next) => {
         }
 
     )
-
-    // return res.status(401).send("Unauthorized")
 }
 exports.IsUser = async (req, res, next) => {
     const { token } = req.headers
