@@ -4,11 +4,14 @@ const PostModel = require('../model/post-model');
 const { findOne } = require('../model/post-model');
 
 exports.getPosts = async (req, res) => {
-    const posts = await PostModel.find();
+    const { startNumber, endNumber } = req.query
+    console.log(startNumber, endNumber)
+    // const posts = await PostModel.find({}).limit(10);
+    const post = await PostModel.find().skip(Number(startNumber)).limit(Number(endNumber))
     if (req.body.userName) {
         return res.status(400).json({ message: "Please login" })
     }
-    res.status(200).json({ data: posts })
+    res.status(200).json({ data: post })
 }
 
 exports.createPost = async (request, response) => {
