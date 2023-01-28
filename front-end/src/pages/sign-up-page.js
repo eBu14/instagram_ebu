@@ -9,7 +9,7 @@ export const SignUpPage = () => {
 
     function signup() {
         axios
-        .post('http://localhost:8000'+ "/signup", {
+        .post('https://back-end-five-eta.vercel.app'+ "/signup", {
            userName : userName,
            password : password
         })

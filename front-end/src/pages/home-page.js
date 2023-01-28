@@ -10,7 +10,7 @@ export const HomePage = () => {
 
     function post() {
         // useEffect(()=> {
-        axios.get(`http://localhost:8000/posts?startNumber=${startNumber}&endNumber=${endNumber} `, { userName: localStorage.getItem("name") })
+        axios.get(`https://back-end-five-eta.vercel.app/posts?startNumber=${startNumber}&endNumber=${endNumber} `, { userName: localStorage.getItem("name") })
             .then((res) => {
                 console.log(res.data)
                 setData(res.data.data)

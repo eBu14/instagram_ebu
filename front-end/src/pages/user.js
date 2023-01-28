@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 const User = () => {
     const [data , setData] = useEffect([])
     useEffect(() => {
-        axios.get( 'http://localhost:8000' + '/UserPosts' , {userName: localStorage.getItem("name")})
+        axios.get( 'https://back-end-five-eta.vercel.app' + '/UserPosts' , {userName: localStorage.getItem("name")})
         .then((res) => {
             console.log(res.data)
             setData(res.data)

@@ -24,7 +24,7 @@ const PostPage = () => {
             }
         }
         axios
-            .post('http://localhost:8000' + '/posts', {
+            .post('https://back-end-five-eta.vercel.app' + '/posts', {
                 description: description,
                 imageFile: imageFile,
                 userName: localStorage.getItem("name")
